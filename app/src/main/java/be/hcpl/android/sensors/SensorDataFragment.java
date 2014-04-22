@@ -72,8 +72,16 @@ public class SensorDataFragment extends BaseFragment implements SensorEventListe
         mSensorDataView = (TextView)view.findViewById(R.id.text_data_value);
 
         // show some information about the selected sensor
-        TextView textView = (TextView)view.findViewById(R.id.text_selected_sensor_value);
+        final TextView textView = (TextView)view.findViewById(R.id.text_selected_sensor_value);
         textView.setText(new StringBuilder("Selected sensor is: ").append(mCurrentSensor));
+
+        // the clear button
+        view.findViewById(R.id.button_clear).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mSensorDataView.setText("");
+            }
+        });
     }
 
     @Override

@@ -14,5 +14,6 @@
     <string name="welcome_info">Welcome to the sensor data example app</string>
     <string name="selected_sensor_is">Selected sensor is</string>
     <string name="selected_sensor_data_is">Selected sensor data is</string>
+    <string name="clear">clear all values</string>
 
 </resources>

@@ -28,13 +28,20 @@
 
     <!-- TODO data update speed selection here -->
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_clear"
+        android:layout_below="@id/text_selected_sensor_value"
+        android:text="@string/clear"/>
+
     <!-- print the received sensor data here -->
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_data"
-        android:layout_below="@id/text_selected_sensor_value"
+        android:layout_below="@id/button_clear"
         android:text="@string/selected_sensor_data_is"/>
 
     <TextView
