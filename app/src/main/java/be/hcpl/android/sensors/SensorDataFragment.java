@@ -39,7 +39,7 @@ public class SensorDataFragment extends BaseFragment implements SensorEventListe
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_sensor_data, container);
+        return inflater.inflate(R.layout.fragment_sensor_data, container, false);
     }
 
     @Override

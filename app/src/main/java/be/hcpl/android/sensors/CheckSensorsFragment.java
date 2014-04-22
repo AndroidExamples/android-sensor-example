@@ -49,7 +49,7 @@ public class CheckSensorsFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_list_sensors, container);
+        return inflater.inflate(R.layout.fragment_list_sensors, container, false);
     }
 
     @Override
