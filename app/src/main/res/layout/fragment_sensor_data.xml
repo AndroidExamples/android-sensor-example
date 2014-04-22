@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_data_info"
+        android:text="@string/data_info"
+        android:textSize="20sp"/>
+
+    <!-- show what sensor is currently selected -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_selected_sensor"
+        android:layout_below="@id/text_data_info"/>
+
+    <!-- TODO data update speed selection here -->
+
+    <!-- print the received sensor data here -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_data"
+        android:layout_below="@+id/text_selected_sensor"/>
+
+</RelativeLayout>

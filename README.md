@@ -16,9 +16,39 @@ trigger stuff (like wake your device) one certain tresholds. That "wake your dev
 something I personally need and didn't find a good working alternative for. If possible I'll see
 if the app can do more than waking up.
 
+## Fragments
+
+Some of the fragments in this example app with information on what they do.
+
+### CheckSensorsFragment
+
+This fragment gives you a list for all sensors that were found on this device. See code for details
+on how to retrieve this list. This is where to start, use the sensorManager to get a listing
+and go from there.
+
+### SensorDataFragment
+
+For a given sensor display data by listening on data changes. This shows how to open a sensor for
+listening for data changes but also how to close it properly when done.
+
+## Open Points
+
+* complete sensor listing and data visualisation
+* add grahps for data view
+* implement the wake device on wave or other use case
+
+## Version History
+
+### 0.1.0
+
+Upcoming, first release
+
 ## Resources
 
-* http://developer.android.com/guide/topics/sensors/sensors_overview.html
+* A [quick overview of the available sensors on Android devices](http://developer.android.com/guide/topics/sensors/sensors_overview.html)
+. Note that these are the possibly available sensors, still depends on hardware so make sure to
+check that:
+
 
 
 

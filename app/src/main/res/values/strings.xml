@@ -9,5 +9,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <string name="sensor_info">A list of all the available sensors on this device</string>
+    <string name="data_info">Data information for a single selected sensor</string>
+    <string name="welcome_info">Welcome to the sensor data example app</string>
 
 </resources>
