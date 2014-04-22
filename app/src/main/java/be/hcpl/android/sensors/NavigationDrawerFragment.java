@@ -106,7 +106,7 @@ public class NavigationDrawerFragment extends Fragment {
                 android.R.id.text1,
                 new Fragment[]{
                         new WelcomeFragment(),
-                        new CheckSensorsFragment(),
+                        new ListSensorFragment(),
                         new SensorDataFragment()
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);

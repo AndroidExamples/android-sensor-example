@@ -20,7 +20,7 @@ if the app can do more than waking up.
 
 Some of the fragments in this example app with information on what they do.
 
-### CheckSensorsFragment
+### ListSensorFragment
 
 This fragment gives you a list for all sensors that were found on this device. See code for details
 on how to retrieve this list. This is where to start, use the sensorManager to get a listing

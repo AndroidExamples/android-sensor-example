@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * A fragment that checks all available sensors for this device
  */
-public class CheckSensorsFragment extends BaseFragment {
+public class ListSensorFragment extends BaseFragment {
 
 
     // you'll always need a reference to the sensorManager
