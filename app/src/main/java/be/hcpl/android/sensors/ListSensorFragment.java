@@ -74,6 +74,11 @@ public class ListSensorFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Sensor sensor = (Sensor)listAdapter.getItem(i);
 
+                // and pass it on to the data fragment in a bundle
+                Bundle bundle = new Bundle();
+                bundle.putInt(SensorDataFragment.KEY_SENSOR_TYPE, sensor.getType());
+                getParentActivity().switchFragment(SensorDataFragment.getInstance(bundle));
+
             }
         });
     }

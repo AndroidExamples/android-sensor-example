@@ -6,7 +6,6 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,19 +21,43 @@ public class SensorDataFragment extends BaseFragment implements SensorEventListe
 
     // fixed single sensor reference
     // TODO get this one from the sensor listing fragment instead
-    private Sensor mLight;
+    private Sensor mCurrentSensor;
 
-    // TODO make speed selectable from UI
+    public static final String KEY_SENSOR_TYPE = "selected_sensor_type";
+
+    // TODO make speed selectable from UI, same for moving average window and more
 
     // the textview to show all the received sensor data
     private TextView mSensorDataView;
+
+    /**
+     * helper to create an instance of this fragment with the given arguments bundle
+     * @param bundle
+     * @return
+     */
+    public static SensorDataFragment getInstance(Bundle bundle ){
+        SensorDataFragment instance = new SensorDataFragment();
+        instance.setArguments(bundle);
+        return instance;
+    }
 
     @Override
     public final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // always need a sensor manager
         mSensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        mLight = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+
+        // retrieve optional information from bundle
+        Bundle arguments = getArguments();
+        if( arguments != null && arguments.containsKey(KEY_SENSOR_TYPE)) {
+            int sensorType = arguments.getInt(KEY_SENSOR_TYPE);
+            mCurrentSensor = mSensorManager.getDefaultSensor(sensorType);
+        }
+        // some default to fallback to
+        else {
+            mCurrentSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+        }
     }
 
     @Override
@@ -46,7 +69,11 @@ public class SensorDataFragment extends BaseFragment implements SensorEventListe
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mSensorDataView = (TextView)view.findViewById(R.id.text_data);
+        mSensorDataView = (TextView)view.findViewById(R.id.text_data_value);
+
+        // show some information about the selected sensor
+        TextView textView = (TextView)view.findViewById(R.id.text_selected_sensor_value);
+        textView.setText(new StringBuilder("Selected sensor is: ").append(mCurrentSensor));
     }
 
     @Override
@@ -62,7 +89,7 @@ public class SensorDataFragment extends BaseFragment implements SensorEventListe
         // Do something with this sensor value.
 
         // TODO show all data, also for other sensors, append instead of replace
-        mSensorDataView.setText(String.valueOf(lux));
+        mSensorDataView.append(new StringBuilder(String.valueOf(lux)).append("\r\n"));
 
         // make sure to never block this method, this will be called on every value update
     }
@@ -71,7 +98,7 @@ public class SensorDataFragment extends BaseFragment implements SensorEventListe
     public void onResume() {
         super.onResume();
         // start listening for new values here
-        mSensorManager.registerListener(this, mLight, SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mCurrentSensor, SensorManager.SENSOR_DELAY_NORMAL);
         // we can use faster data delays like: SENSOR_DELAY_GAME (20,000 microsecond delay),
         // SENSOR_DELAY_UI (60,000 microsecond delay), or SENSOR_DELAY_FASTEST
     }
