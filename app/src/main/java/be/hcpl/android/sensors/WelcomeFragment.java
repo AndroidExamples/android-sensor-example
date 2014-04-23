@@ -1,10 +1,11 @@
 package be.hcpl.android.sensors;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import be.hcpl.android.sensors.core.BaseFragment;
 
 /**
  * A very basic fragment that shows some app information at first opening

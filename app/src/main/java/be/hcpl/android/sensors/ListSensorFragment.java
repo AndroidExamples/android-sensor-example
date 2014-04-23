@@ -4,7 +4,6 @@ import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.List;
+
+import be.hcpl.android.sensors.core.BaseFragment;
 
 /**
  * A fragment that checks all available sensors for this device

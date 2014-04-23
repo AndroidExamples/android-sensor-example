@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import be.hcpl.android.sensors.core.BaseFragment;
+
 /**
  * Example of listening for sensor data
  */

@@ -1,6 +1,8 @@
-package be.hcpl.android.sensors;
+package be.hcpl.android.sensors.core;
 
 import android.support.v4.app.Fragment;
+
+import be.hcpl.android.sensors.MainActivity;
 
 /**
  * A base class for all fragments that will show up in the navigation bar. These all need a
