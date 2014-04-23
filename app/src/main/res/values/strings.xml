@@ -16,5 +16,13 @@
     <string name="selected_sensor_data_is">Selected sensor data is</string>
     <string name="clear">clear all values</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="info_start_stop_service">Use these buttons to start/stop the service</string>
+    <string name="start">Start</string>
+    <string name="info_service_params">Use below options to adapt service behaviour, make sure to restart service when done</string>
+    <string name="stop">Stop</string>
+    <string name="enable_logging">enable logging</string>
+    <string name="min_threshold">minimal threshold value</string>
+    <string name="max_threshold">maximum threshold value</string>
+    <string name="interval_in_ms">interval in ms</string>
 
 </resources>

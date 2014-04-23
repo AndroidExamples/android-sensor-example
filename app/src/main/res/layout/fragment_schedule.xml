@@ -8,21 +8,63 @@
         android:id="@+id/txtInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Use these buttons to start/stop the service"
-        android:textSize="20sp"/>
+        android:text="@string/info_start_stop_service"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnStart"
-        android:layout_below="@+id/txtInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Start"/>
+        android:layout_below="@+id/txtInfo"
+        android:text="@string/start" />
 
     <Button
         android:id="@+id/btnStop"
-        android:layout_below="@+id/btnStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Stop"/>
+        android:layout_below="@+id/btnStart"
+        android:text="@string/stop" />
+
+    <!-- some configurable options -->
+
+    <TextView
+        android:id="@+id/txtParams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStop"
+        android:text="@string/info_service_params"
+        android:textSize="20sp" />
+
+    <CheckBox
+        android:id="@+id/chkLogging"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtParams"
+        android:text="@string/enable_logging" />
+
+    <EditText
+        android:id="@+id/editMin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/chkLogging"
+        android:hint="@string/min_threshold"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/editMax"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editMin"
+        android:hint="@string/max_threshold"
+        android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/editInterval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editMax"
+        android:hint="@string/interval_in_ms"
+        android:inputType="number"/>
+
 
 </RelativeLayout>
