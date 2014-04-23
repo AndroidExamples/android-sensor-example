@@ -93,11 +93,16 @@ public class SensorDataFragment extends BaseFragment implements SensorEventListe
     public final void onSensorChanged(SensorEvent event) {
         // The light sensor returns a single value.
         // Many sensors return 3 values, one for each axis.
-        float lux = event.values[0];
+        //float lux = event.values[0];
         // Do something with this sensor value.
 
-        // TODO show all data, also for other sensors, append instead of replace
-        mSensorDataView.append(new StringBuilder(String.valueOf(lux)).append("\r\n"));
+        // append all available values on one line
+        StringBuilder sb = new StringBuilder();
+        for( float value : event.values )
+                sb.append(String.valueOf(value)).append(" ");
+
+        // and print these
+        mSensorDataView.append(sb.append("\r\n"));
 
         // make sure to never block this method, this will be called on every value update
     }
