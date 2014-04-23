@@ -45,16 +45,18 @@
         android:text="@string/selected_sensor_data_is" />
 
     <ScrollView
-        android:layout_width="wrap_content"
+        android:id="@+id/scroller"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/text_data">
+        android:scrollbars="vertical"
+        android:layout_below="@+id/text_data"
+        android:fillViewport="true">
 
         <TextView
             android:id="@+id/text_data_value"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:lines="20" />
-
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
     </ScrollView>
 
 </RelativeLayout>
