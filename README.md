@@ -66,11 +66,11 @@ And the manifest needs to contain:
 
 ### 0.1.0
 
-first release
-fixed scrolling
-implemented basic sensor listing
-sensor data fetching
-and background example
+* first release
+* fixed scrolling
+* implemented basic sensor listing
+* sensor data fetching
+* and background service example
 
 ## Resources
 
