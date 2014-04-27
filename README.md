@@ -64,6 +64,10 @@ And the manifest needs to contain:
 
 ## Version History
 
+### Upcoming 0.1.1
+
+* update on deprecated wakelock options, using the methods referenced at http://developer.android.com/reference/android/os/PowerManager.html form now on.
+
 ### 0.1.0
 
 * first release

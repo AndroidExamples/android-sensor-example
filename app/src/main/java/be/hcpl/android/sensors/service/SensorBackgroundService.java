@@ -128,18 +128,14 @@ public class SensorBackgroundService extends Service implements SensorEventListe
         // we need to enable the screen
         if (sensorValue < mThresholdMin || sensorValue > mThresholdMax) {
 
-            // TODO fix deprecated code here
             // TODO we could even make the actions configurable...
 
             // wake screen here
-            PowerManager pm = (PowerManager) getApplicationContext().getSystemService(getApplicationContext().POWER_SERVICE);
-            PowerManager.WakeLock wakeLock = pm.newWakeLock((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), TAG);
-            wakeLock.acquire();
-
-            // and release screen lock right away also
-            KeyguardManager keyguardManager = (KeyguardManager) getApplicationContext().getSystemService(getApplicationContext().KEYGUARD_SERVICE);
-            KeyguardManager.KeyguardLock keyguardLock = keyguardManager.newKeyguardLock(TAG);
-            keyguardLock.disableKeyguard();
+            PowerManager pm = (PowerManager) getSystemService(getApplicationContext().POWER_SERVICE);
+            PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
+            wl.acquire();
+            //..screen will stay on during this section..
+            wl.release();
         }
 
         // stop the sensor and service
