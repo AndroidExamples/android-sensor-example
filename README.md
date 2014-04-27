@@ -61,13 +61,13 @@ And the manifest needs to contain:
 * complete sensor listing and data visualisation
 * add grahps for data view
 * communicate sensor readings from service to configuration fragment
-* add check for threshold values, should go beyond threshold before triggering again
 
 ## Version History
 
-### Upcoming 0.1.1
+### 0.1.1 (Upcoming)
 
-* update on deprecated wakelock options, using the methods referenced at http://developer.android.com/reference/android/os/PowerManager.html form now on.
+* release wake lock directly after acquiring it now
+* check for non triggering values between triggers
 
 ### 0.1.0
 

@@ -34,9 +34,9 @@ public class SensorBackgroundService extends Service implements SensorEventListe
     private boolean mLogging = false;
 
     /**
-     * an interval for the sensor value reading;
+     * also keep track of the previous value
      */
-    private long mInterval;
+    private static float previousValue;
 
     /**
      * treshold values
@@ -117,7 +117,7 @@ public class SensorBackgroundService extends Service implements SensorEventListe
             for (float value : event.values)
                 sb.append(String.valueOf(value)).append(" | ");
 
-            Log.d(TAG, "received sensor valures are: " + sb.toString());
+            Log.d(TAG, "received sensor valures are: " + sb.toString()+ " and previosValue was: "+previousValue);
         }
 
         // get the value
@@ -126,25 +126,33 @@ public class SensorBackgroundService extends Service implements SensorEventListe
 
         // if first value is below min or above max threshold but only when configured
         // we need to enable the screen
-        if (sensorValue < mThresholdMin || sensorValue > mThresholdMax) {
+        if ((previousValue > mThresholdMin && sensorValue < mThresholdMin)
+                || (previousValue < mThresholdMax && sensorValue > mThresholdMax)) {
 
             // and a check in between that there should have been a non triggering value before
             // we can mark a given value as trigger. This is to overcome unneeded wakeups during
             // night for instance where the sensor readings for a light sensor would always be below
             // the threshold needed for day time use.
 
-
             // TODO we could even make the actions configurable...
 
             // wake screen here
-            PowerManager pm = (PowerManager) getSystemService(getApplicationContext().POWER_SERVICE);
-            PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK, TAG);
-            wl.acquire();
-            //..screen will stay on during this section..
-            wl.release();
+            PowerManager pm = (PowerManager) getApplicationContext().getSystemService(getApplicationContext().POWER_SERVICE);
+            PowerManager.WakeLock wakeLock = pm.newWakeLock((PowerManager.SCREEN_BRIGHT_WAKE_LOCK | PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP), TAG);
+            wakeLock.acquire();
+
+            //and release again
+            wakeLock.release();
+
+            // optional to release screen lock
+            //KeyguardManager keyguardManager = (KeyguardManager) getApplicationContext().getSystemService(getApplicationContext().KEYGUARD_SERVICE);
+            //KeyguardManager.KeyguardLock keyguardLock =  keyguardManager.newKeyguardLock(TAG);
+            //keyguardLock.disableKeyguard();
         }
 
-        // stop the sensor and service
+        previousValue = sensorValue;
+
+                // stop the sensor and service
         mSensorManager.unregisterListener(this);
         stopSelf();
     }
