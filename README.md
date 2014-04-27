@@ -60,7 +60,8 @@ And the manifest needs to contain:
 
 * complete sensor listing and data visualisation
 * add grahps for data view
-* implement the wake device on wave or other use case
+* communicate sensor readings from service to configuration fragment
+* add check for threshold values, should go beyond threshold before triggering again
 
 ## Version History
 

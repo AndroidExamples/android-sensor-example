@@ -128,6 +128,12 @@ public class SensorBackgroundService extends Service implements SensorEventListe
         // we need to enable the screen
         if (sensorValue < mThresholdMin || sensorValue > mThresholdMax) {
 
+            // and a check in between that there should have been a non triggering value before
+            // we can mark a given value as trigger. This is to overcome unneeded wakeups during
+            // night for instance where the sensor readings for a light sensor would always be below
+            // the threshold needed for day time use.
+
+
             // TODO we could even make the actions configurable...
 
             // wake screen here

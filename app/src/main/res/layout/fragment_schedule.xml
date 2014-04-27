@@ -25,6 +25,8 @@
         android:layout_below="@+id/btnStart"
         android:text="@string/stop" />
 
+    <!-- TODO communicate current sensor value from service to activity using handler -->
+
     <!-- some configurable options -->
 
     <TextView
