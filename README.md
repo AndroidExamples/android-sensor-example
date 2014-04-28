@@ -59,12 +59,12 @@ And the manifest needs to contain:
 ## Open Points
 
 * complete sensor listing and data visualisation
-* add grahps for data view
+* add grahps for sensor data view
 * communicate sensor readings from service to configuration fragment
 
 ## Version History
 
-### 0.1.1 (Upcoming)
+### 0.1.1
 
 * release wake lock directly after acquiring it now
 * check for non triggering values between triggers
